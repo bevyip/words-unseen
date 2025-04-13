@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.5:1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/lucky.css">
+    <style>
+        @font-face {
+            font-family: 'PokemonGB';
+            src: url('https://cdn.jsdelivr.net/gh/fonts-archive/PokemonGB/PokemonGB.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-container">
+            <div class="lucky-only">
+                <span class="lucky-word">lucky</span>
+            </div>
+            <div class="full-text">
+                <p>I'm so lucky to have you in my life.</p>
+                <div class="arrow"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="color-controls">
+                <div class="color-wheel-container">
+                    <canvas id="text-color-wheel" class="color-wheel"></canvas>
+                    <div class="color-indicator"></div>
+                </div>
+                <div class="brightness-slider-container">
+                    <input type="range" id="brightness-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <div class="contrast-info">
+                <span id="contrast-ratio">21:1</span>
+            </div>
+            <button id="clover-button" class="clover-button">☘︎</button>
+        </div>
+    </div>
+    <script src="scripts/lucky.js"></script>
+</body>
+
+</html>

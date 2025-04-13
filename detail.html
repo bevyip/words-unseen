@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/detail.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="memory-item" data-tooltip="Your family's birthdays.">
+                <img src="img/calendar.jpeg" alt="Calendar">
+            </div>
+            <div class="memory-item" data-tooltip="The seafood you like and don't like.">
+                <img src="img/seafood.png" alt="Seafood">
+            </div>
+            <div class="memory-item" data-tooltip="Jasmine and Tie Guan Yin teas are your favorite.">
+                <img src="img/tea.png" alt="Tea">
+            </div>
+        </div>
+
+        <div class="center-column">
+            <div class="notebook-container">
+                <div class="notebook-page">
+                    <img src="img/notebook.jpeg" alt="Notebook">
+                    <div class="memory-items-container" id="memoryItems"></div>
+                    <div class="quote-container" id="quoteContainer">
+                        <p class="final-quote">When we first met, I would write down every little detail about you
+                            because I
+                            didn't want to forget anything.</p>
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="memory-item" data-tooltip="Your go-to boba and Starbucks orders.">
+                <img src="img/drinks.png" alt="Drink">
+            </div>
+            <div class="memory-item" data-tooltip="What flowers you like and which ones are safe for cats.">
+                <img src="img/flowers.png" alt="Flower">
+            </div>
+            <div class="memory-item" data-tooltip="The recipes of food you love to cook.">
+                <img src="img/recipe.jpeg" alt="Recipe">
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/detail.js"></script>
+</body>
+
+</html>

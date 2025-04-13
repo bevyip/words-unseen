@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
+  transition: background-color 5s ease;
+  position: relative;
+}
+
+body.black-bg {
+  background-color: #000;
+}
+
+body.blurred::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(5px) grayscale(50%);
+  z-index: 1;
+}
+
+.popup {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.popup-header {
+  background-color: #ff4444;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.popup-title:hover {
+  cursor: default;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  padding: 0 4px;
+  font-family: "Playfair Display", serif;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  color: #f7f5f5;
+  font-weight: 900;
+}
+
+.popup-content {
+  padding: 20px;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 700;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.final-message {
+  position: fixed;
+  text-align: center;
+  opacity: 0;
+  color: #fff;
+  font-size: 3rem;
+  max-width: 80%;
+  line-height: 1.6;
+  font-weight: 500;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: opacity 5s ease, filter 5s ease, text-shadow 5s ease;
+  z-index: 0;
+  filter: blur(8px);
+}
+
+.final-message.visible {
+  opacity: 1;
+  filter: blur(0);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+  z-index: 3;
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-50%) translateX(-10px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.arrow.visible {
+  opacity: 1;
+  cursor: pointer;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateX(-10px);
+  }
+  50% {
+    transform: translateX(-50%) translateX(0);
+  }
+}
+
+.arrow::before {
+  content: "→";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}

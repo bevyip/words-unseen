@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我爱你</title>
+    <link rel="stylesheet" href="styles/ready.css">
+</head>
+
+<body class="fade-in">
+    <video autoplay muted loop id="bgVideo">
+        <source src="img/water.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        <div class="container">
+            <div class="message">
+                I want to make sure you <button class="know-button">know</button>without a doubt that I love you from
+                my
+                heart.
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="customModal">
+        <div class="pokemon-dialog">
+            <div class="dialog-content">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="dialog-arrow">▼</div>
+            <div class="dialog-controls">
+                <button id="backButton" class="dialog-button">←</button>
+                <button id="forwardButton" class="dialog-button">→</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/ready.js"></script>
+</body>
+
+</html>
