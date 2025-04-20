@@ -80,14 +80,12 @@ input:checked + .slider:before {
 /* Message Container */
 .message-container {
   text-align: center;
-  opacity: 0;
-  /* transform: translateY(20px); */
+  display: none;
   transition: all 0.5s ease;
 }
 
 body.dark-mode .message-container {
-  opacity: 1;
-  /* transform: translateY(0); */
+  display: block;
 }
 
 .message {

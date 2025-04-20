@@ -4,51 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4.5:1</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Lucky Wheel</title>
     <link rel="stylesheet" href="styles/lucky.css">
-    <style>
-        @font-face {
-            font-family: 'PokemonGB';
-            src: url('https://cdn.jsdelivr.net/gh/fonts-archive/PokemonGB/PokemonGB.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="text-container">
-            <div class="lucky-only">
-                <span class="lucky-word">lucky</span>
+    <div id="wrapper">
+        <div id="wheel">
+            <div id="inner-wheel">
+                <div class="sec"><img src="img/lucky0.png" alt="Lucky 0"></div>
+                <div class="sec"><img src="img/lucky1.png" alt="Lucky 1"></div>
+                <div class="sec"><img src="img/lucky2.png" alt="Lucky 2"></div>
+                <div class="sec"><img src="img/lucky3.png" alt="Lucky 3"></div>
+                <div class="sec"><img src="img/lucky4.png" alt="Lucky 4"></div>
+                <div class="sec"><img src="img/lucky5.png" alt="Lucky 5"></div>
             </div>
-            <div class="full-text">
-                <p>I'm so lucky to have you in my life.</p>
-                <div class="arrow"></div>
+
+            <div id="spin">
+                <div id="inner-spin"></div>
             </div>
+
+            <div id="shine"></div>
         </div>
 
-        <div class="controls">
-            <div class="color-controls">
-                <div class="color-wheel-container">
-                    <canvas id="text-color-wheel" class="color-wheel"></canvas>
-                    <div class="color-indicator"></div>
-                </div>
-                <div class="brightness-slider-container">
-                    <input type="range" id="brightness-slider" min="0" max="100" value="50">
-                </div>
-            </div>
+        <div id="txt"></div>
+    </div>
 
-            <div class="contrast-info">
-                <span id="contrast-ratio">21:1</span>
-            </div>
-            <button id="clover-button" class="clover-button">☘︎</button>
+    <div id="overlay" class="hidden"></div>
+
+    <div id="polaroid" class="hidden">
+        <div class="polaroid-image">
+            <img src="" alt="Winning Image">
+        </div>
+        <div class="polaroid-text">I'm so lucky to have you in my life.</div>
+        <div class="polaroid-buttons">
+            <button id="spin-again" class="polaroid-button">Spin Again</button>
+            <a href="safe.html" class="polaroid-button arrow-button">
+                <span class="arrow">→</span>
+            </a>
         </div>
     </div>
+
+    <footer>
+        <p>Art by <a href="https://instagram.com/sundaekids" target="_blank">@sundaekids</a></p>
+    </footer>
+
     <script src="scripts/lucky.js"></script>
 </body>
 

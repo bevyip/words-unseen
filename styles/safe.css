@@ -1,217 +1,155 @@
 body {
-  font-family: "Playfair Display", serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 0;
   background-color: white;
   color: black;
   min-height: 100vh;
-  height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
-.checkbox-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-bottom: 30px;
-  width: 700px;
+.text-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  transition: opacity 1s ease, transform 1s ease;
-  max-height: calc(100vh - 100px);
-  overflow-y: hidden;
-  position: relative;
-  background-color: white;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 1;
 }
 
-.checkbox-container::before {
-  content: "";
+.text-content {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.2) 35px,
-      transparent 35px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent 40px,
-      rgba(0, 0, 0, 0.2) 40px,
-      rgba(0, 0, 0, 0.2) 41px
-    );
-  background-size: 100% 100%, 100% 41px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.checkbox-container.hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
-
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-  white-space: nowrap;
-  position: relative;
-  padding: 0;
-  height: 40px;
-  margin: 0;
-  z-index: 2;
-}
-
-.checkbox-item:last-child {
-  margin-bottom: 10px;
-}
-
-.checkbox-item input[type="checkbox"] {
-  display: none;
-}
-
-.checkbox-item label {
-  position: relative;
-  padding-left: 45px;
-  font-size: 18px;
-  line-height: 40px;
-  display: flex;
-  align-items: center;
+  font-size: 1.5rem;
+  line-height: 1.6;
   text-align: left;
-  width: 100%;
-  justify-content: flex-start;
-  transition: font-weight 0.3s ease;
-  white-space: nowrap;
-  cursor: pointer;
-  height: 100%;
+  color: black;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   margin: 0;
-  padding-right: 10px;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
 }
 
-.checkbox-item input[type="checkbox"]:checked + label {
-  font-weight: 700;
-  cursor: default;
-}
-
-.checkbox-item label:before {
-  content: "☐";
-  position: absolute;
-  left: 10px;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  line-height: 40px;
-  top: 0;
-  z-index: 3;
-  width: 20px;
-  text-align: center;
-}
-
-.checkbox-item input[type="checkbox"]:checked + label:before {
-  content: "❤︎";
-  transform: scale(1.2);
-  cursor: default;
-  font-size: 16px;
-}
-
-.message {
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
+.text-content p {
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
+  padding: 0;
+  display: inline;
+}
+
+.regular-text {
   transition: opacity 1s ease;
-  color: #2c3e50;
-  z-index: 0;
+}
+
+.regular-text.fade-out {
+  opacity: 0;
+}
+
+.highlighted-sentences {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 2;
   pointer-events: none;
 }
 
-.message.visible {
-  opacity: 1;
+.highlighted-sentence {
+  position: absolute;
+  font-weight: 700;
+  color: #2c3e50;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.message.visible::before,
-.message.visible::after {
-  content: "";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(25, 97, 160, 0.6) 0%,
-    rgba(41, 128, 185, 0.5) 20%,
-    rgba(52, 152, 219, 0.4) 40%,
-    rgba(93, 173, 226, 0.3) 60%,
-    rgba(174, 214, 241, 0.2) 80%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  z-index: 1;
+.special-sentence {
+  transition: font-weight 0.2s ease;
+  position: relative;
 }
 
-.message.visible::before {
-  animation: continuousPulse 8s linear infinite;
+.special-sentence:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.message.visible::after {
-  animation: continuousPulse 8s linear infinite 4s;
+.special-sentence.clicked {
+  font-weight: bold;
 }
 
-@keyframes continuousPulse {
+.special-sentence.flowing {
+  animation: fadeOut 3s ease-in-out forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
   0% {
-    width: 0;
-    height: 0;
-    opacity: 0.8;
+    opacity: 1;
   }
   100% {
-    width: 3000px;
-    height: 3000px;
     opacity: 0;
   }
 }
 
+.final-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .arrow {
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 40%;
-  transform: translateX(-50%) translateX(-10px);
+  transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 2;
+  z-index: 3;
+  cursor: pointer;
+  pointer-events: none;
 }
 
 .arrow.visible {
   opacity: 1;
-  cursor: pointer;
+  pointer-events: auto;
   animation: arrowBounce 1.5s ease-in-out infinite;
 }
 
 @keyframes arrowBounce {
   0%,
   100% {
-    transform: translateX(-50%) translateX(-10px);
+    transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateX(0);
+    transform: translateX(-50%) translateY(-10px);
   }
 }
 
@@ -219,5 +157,5 @@ body {
   content: "→";
   font-size: 2rem;
   font-weight: bold;
-  color: #0b2b4b;
+  color: black;
 }

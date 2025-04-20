@@ -80,28 +80,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Animate to center with floating effect
             requestAnimationFrame(() => {
-              bubble.style.transform = `translate(${centerX - currentX}px, ${
-                centerY - currentY
-              }px) scale(1.1)`;
+              const finalX = centerX - currentX;
+              const finalY = centerY - currentY;
 
-              // Wait for the bubble to be centered, then position the arrow
+              // Set CSS variables for the floating animation
+              bubble.style.setProperty("--center-x", `${finalX}px`);
+              bubble.style.setProperty("--center-y", `${finalY}px`);
+
+              bubble.style.transform = `translate(${finalX}px, ${finalY}px) scale(1.1)`;
+
+              // Add click event listener to the final bubble
+              bubble.addEventListener("click", () => {
+                window.location.href = "change.html";
+              });
+
+              // Add floating animation after centering animation completes
               setTimeout(() => {
-                // Get the new position of the centered bubble
-                const newBubbleRect = bubble.getBoundingClientRect();
-                const newBubbleX = newBubbleRect.left - containerRect.left;
-                const newBubbleY = newBubbleRect.top - containerRect.top;
-
-                // Position the arrow relative to the centered bubble
-                arrow.style.position = "absolute";
-                arrow.style.left = `${newBubbleX + newBubbleRect.width}px`;
-                arrow.style.top = `${newBubbleY + newBubbleRect.height}px`;
-
-                // Show and animate the arrow
-                arrow.classList.add("visible");
-                arrow.addEventListener("click", () => {
-                  window.location.href = "change.html";
-                });
-              }, 2000); // Wait for the centering animation to complete
+                bubble.classList.add("floating");
+              }, 1500);
             });
           }, 1000);
         } else {

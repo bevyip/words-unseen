@@ -84,6 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
         finalContainer.className = "final-container";
         document.body.appendChild(finalContainer);
 
+        // Create background image container
+        const backgroundImage = document.createElement("div");
+        backgroundImage.className = "background-image";
+        document.body.appendChild(backgroundImage);
+
         // Create and show final sentence
         const finalSentence = document.createElement("h1");
         finalSentence.className = "final-sentence";
@@ -102,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           finalContainer.classList.add("visible");
           arrow.classList.add("visible");
+          backgroundImage.classList.add("visible");
         }, 1000); // Wait for container fade out
       }, 4500); // 3 flashes (1.5s × 3) + 1s for fade out
     }
