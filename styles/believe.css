@@ -142,10 +142,9 @@ body {
 
 .arrow {
   position: absolute;
-  bottom: -2rem;
-  right: 0;
+  bottom: -40px;
+  right: 50%;
   opacity: 0;
-  transform: translateX(-10px);
   transition: all 0.5s ease;
 }
 

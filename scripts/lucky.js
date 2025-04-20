@@ -46,11 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the final position (0-360)
         const finalPosition = totalDegrees % 360;
         // Each section is 60 degrees (360/6)
-        const sectionIndex = Math.floor(finalPosition / 60);
-        // Since arrow starts at lucky5, we need to adjust
-        const winningSection = (5 - sectionIndex) % 6;
+        // Add 30 degrees offset to measure from center of section
+        const adjustedPosition = (finalPosition + 30) % 360;
+        const sectionIndex = Math.round(adjustedPosition / 60);
+        // Since arrow starts at lucky5, we need to adjust and ensure positive result
+        const winningSection = (5 - sectionIndex + 6) % 6;
 
         console.log("Final position:", finalPosition);
+        console.log("Adjusted position:", adjustedPosition);
         console.log("Section index:", sectionIndex);
         console.log("Winning section:", winningSection);
 
